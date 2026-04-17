@@ -1,0 +1,19 @@
+# Raw and processed data files are too large for GitHub
+data/raw/
+data/processed/
+
+# Environment
+venv/
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Large file types
+*.csv
+*.parquet
+*.xlsxvenv/
