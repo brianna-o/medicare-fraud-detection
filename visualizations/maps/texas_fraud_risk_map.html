@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1e034f19c7cfe67b78e10bf726fb90d3 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<div style='position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+     background-color: white; padding: 15px; border-radius: 8px;
+     border: 2px solid #ccc; font-family: Arial; font-size: 13px;'>
+    <b>Provider Risk Level</b><br><br>
+    <span style='color: #d32f2f;'>●</span> Critical Risk (10+)<br>
+    <span style='color: #f57c00;'>●</span> High Risk (5-10)<br>
+    <span style='color: #fbc02d;'>●</span> Moderate Risk (2-5)<br><br>
+    <small>Circle size = risk score magnitude</small>
+</div>
+    
+            <div class="folium-map" id="map_1e034f19c7cfe67b78e10bf726fb90d3" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1e034f19c7cfe67b78e10bf726fb90d3 = L.map(
+                "map_1e034f19c7cfe67b78e10bf726fb90d3",
+                {
+                    center: [31.0, -99.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9ec5fad095e205ac4950fa60b31530fc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9ec5fad095e205ac4950fa60b31530fc.addTo(map_1e034f19c7cfe67b78e10bf726fb90d3);
+        
+    
+            var marker_cluster_c119d2936ebb894d71aac32fda09b660 = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_1483ddab4d7abf55b085dc1b23221082 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20.02995, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_fcbeb92ba599a147cbd694311d085e77 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f1d894a67ede1694434b517cfab79dbd = $(`<div id="html_f1d894a67ede1694434b517cfab79dbd" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #d32f2f; margin-bottom: 5px;'>             ⚠️ Farrell, Jessica         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1518325638<br>         <hr>         <b>Risk Score:</b> 24.06<br>         <b>Total Cost:</b> $1,048,877.03<br>         <b>Total Claims:</b> 41<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_fcbeb92ba599a147cbd694311d085e77.setContent(html_f1d894a67ede1694434b517cfab79dbd);
+            
+        
+
+        circle_marker_1483ddab4d7abf55b085dc1b23221082.bindPopup(popup_fcbeb92ba599a147cbd694311d085e77)
+        ;
+
+        
+    
+    
+            circle_marker_1483ddab4d7abf55b085dc1b23221082.bindTooltip(
+                `<div>
+                     Farrell | Risk: 24.06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1353ca2c5cf604294153068087c0efc1 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.1296, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_81a0d5be38ccf30f0c0dc60db8aaf8d1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2dbff1d0b54b517c7aecab667198bd0f = $(`<div id="html_2dbff1d0b54b517c7aecab667198bd0f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #d32f2f; margin-bottom: 5px;'>             ⚠️ Jian, Sarah         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1639571391<br>         <hr>         <b>Risk Score:</b> 20.26<br>         <b>Total Cost:</b> $1,868,050.29<br>         <b>Total Claims:</b> 69<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_81a0d5be38ccf30f0c0dc60db8aaf8d1.setContent(html_2dbff1d0b54b517c7aecab667198bd0f);
+            
+        
+
+        circle_marker_1353ca2c5cf604294153068087c0efc1.bindPopup(popup_81a0d5be38ccf30f0c0dc60db8aaf8d1)
+        ;
+
+        
+    
+    
+            circle_marker_1353ca2c5cf604294153068087c0efc1.bindTooltip(
+                `<div>
+                     Jian | Risk: 20.26
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0e7402f06a5e3b750d37741c550a5aae = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.33435, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_061741eec28bcab5888fe49ee02aae44 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3e9ad685fd1beb7ca82836b0bdb58a17 = $(`<div id="html_3e9ad685fd1beb7ca82836b0bdb58a17" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #d32f2f; margin-bottom: 5px;'>             ⚠️ Mcbryde, Jennifer         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1861597080<br>         <hr>         <b>Risk Score:</b> 14.67<br>         <b>Total Cost:</b> $2,090,964.49<br>         <b>Total Claims:</b> 92<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 4     </div>     </div>`)[0];
+                popup_061741eec28bcab5888fe49ee02aae44.setContent(html_3e9ad685fd1beb7ca82836b0bdb58a17);
+            
+        
+
+        circle_marker_0e7402f06a5e3b750d37741c550a5aae.bindPopup(popup_061741eec28bcab5888fe49ee02aae44)
+        ;
+
+        
+    
+    
+            circle_marker_0e7402f06a5e3b750d37741c550a5aae.bindTooltip(
+                `<div>
+                     Mcbryde | Risk: 14.67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_252aeb7a75443867e16f2364255c5d10 = L.circleMarker(
+                [27.8006, -97.3964],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.74585, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_6a6006d6b4521b64b85f30f890a09ff6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4917b1e5910061f62ea87b9641859a11 = $(`<div id="html_4917b1e5910061f62ea87b9641859a11" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #d32f2f; margin-bottom: 5px;'>             ⚠️ Mcgarry, Jonathon         </h4>         <b>Specialty:</b> Emergency Medicine<br>         <b>City:</b> Corpus Christi<br>         <b>NPI:</b> 1326224056<br>         <hr>         <b>Risk Score:</b> 13.49<br>         <b>Total Cost:</b> $766,779.87<br>         <b>Total Claims:</b> 336<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_6a6006d6b4521b64b85f30f890a09ff6.setContent(html_4917b1e5910061f62ea87b9641859a11);
+            
+        
+
+        circle_marker_252aeb7a75443867e16f2364255c5d10.bindPopup(popup_6a6006d6b4521b64b85f30f890a09ff6)
+        ;
+
+        
+    
+    
+            circle_marker_252aeb7a75443867e16f2364255c5d10.bindTooltip(
+                `<div>
+                     Mcgarry | Risk: 13.49
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9c64626799e98caf2edc1f19582b4c94 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.3128, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_bd7e84e73c00993185113b12d6cc8086 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e52c29607e36daa08e4e705db6978eb5 = $(`<div id="html_e52c29607e36daa08e4e705db6978eb5" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #d32f2f; margin-bottom: 5px;'>             ⚠️ Olvera, Nina         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1851856926<br>         <hr>         <b>Risk Score:</b> 12.63<br>         <b>Total Cost:</b> $29,183,344.00<br>         <b>Total Claims:</b> 5,171<br>         <b>Unique Drugs:</b> 13<br>         <b>Total Flags:</b> 29     </div>     </div>`)[0];
+                popup_bd7e84e73c00993185113b12d6cc8086.setContent(html_e52c29607e36daa08e4e705db6978eb5);
+            
+        
+
+        circle_marker_9c64626799e98caf2edc1f19582b4c94.bindPopup(popup_bd7e84e73c00993185113b12d6cc8086)
+        ;
+
+        
+    
+    
+            circle_marker_9c64626799e98caf2edc1f19582b4c94.bindTooltip(
+                `<div>
+                     Olvera | Risk: 12.63
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9f42658752a71380c283fbe062b8c02e = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#d32f2f", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d32f2f", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.134599999999999, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_611ece0df043317e74eab7f33c5905a5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1ce61575f0c96669c10ded545bd46956 = $(`<div id="html_1ce61575f0c96669c10ded545bd46956" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #d32f2f; margin-bottom: 5px;'>             ⚠️ Mayberry, Jordan         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1982940466<br>         <hr>         <b>Risk Score:</b> 10.27<br>         <b>Total Cost:</b> $436,628.37<br>         <b>Total Claims:</b> 31<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_611ece0df043317e74eab7f33c5905a5.setContent(html_1ce61575f0c96669c10ded545bd46956);
+            
+        
+
+        circle_marker_9f42658752a71380c283fbe062b8c02e.bindPopup(popup_611ece0df043317e74eab7f33c5905a5)
+        ;
+
+        
+    
+    
+            circle_marker_9f42658752a71380c283fbe062b8c02e.bindTooltip(
+                `<div>
+                     Mayberry | Risk: 10.27
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbabc7fb2d4c2a262575e0d13d3ff599 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.72005, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_fdae5baefe47f4e586396b60f75ee250 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_640eaac1d6eb43cb9a62686a52d8a7c4 = $(`<div id="html_640eaac1d6eb43cb9a62686a52d8a7c4" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Beecherl, Ernest         </h4>         <b>Specialty:</b> General Surgery<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1396763207<br>         <hr>         <b>Risk Score:</b> 9.44<br>         <b>Total Cost:</b> $170,907.70<br>         <b>Total Claims:</b> 37<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_fdae5baefe47f4e586396b60f75ee250.setContent(html_640eaac1d6eb43cb9a62686a52d8a7c4);
+            
+        
+
+        circle_marker_fbabc7fb2d4c2a262575e0d13d3ff599.bindPopup(popup_fdae5baefe47f4e586396b60f75ee250)
+        ;
+
+        
+    
+    
+            circle_marker_fbabc7fb2d4c2a262575e0d13d3ff599.bindTooltip(
+                `<div>
+                     Beecherl | Risk: 9.44
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d4ceba5668755a70f66523e02baeb46d = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.425799999999999, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_fb9935ad853e8ab0cb1402b5969f3b1c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_361849c01b9877fb59a10b8e66dbd3a4 = $(`<div id="html_361849c01b9877fb59a10b8e66dbd3a4" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Sicalag, Rosalie         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1821746835<br>         <hr>         <b>Risk Score:</b> 8.85<br>         <b>Total Cost:</b> $2,124,354.81<br>         <b>Total Claims:</b> 147<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_fb9935ad853e8ab0cb1402b5969f3b1c.setContent(html_361849c01b9877fb59a10b8e66dbd3a4);
+            
+        
+
+        circle_marker_d4ceba5668755a70f66523e02baeb46d.bindPopup(popup_fb9935ad853e8ab0cb1402b5969f3b1c)
+        ;
+
+        
+    
+    
+            circle_marker_d4ceba5668755a70f66523e02baeb46d.bindTooltip(
+                `<div>
+                     Sicalag | Risk: 8.85
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4b13e0ce1354295379b00756871738e8 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.20645, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_f67d9df84415051c5f5c49b3578342d8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c80817907dc769003769763152dec5b9 = $(`<div id="html_c80817907dc769003769763152dec5b9" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Oliva, Anthony         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1467569822<br>         <hr>         <b>Risk Score:</b> 8.41<br>         <b>Total Cost:</b> $50,570,752.74<br>         <b>Total Claims:</b> 202,397<br>         <b>Unique Drugs:</b> 21<br>         <b>Total Flags:</b> 26     </div>     </div>`)[0];
+                popup_f67d9df84415051c5f5c49b3578342d8.setContent(html_c80817907dc769003769763152dec5b9);
+            
+        
+
+        circle_marker_4b13e0ce1354295379b00756871738e8.bindPopup(popup_f67d9df84415051c5f5c49b3578342d8)
+        ;
+
+        
+    
+    
+            circle_marker_4b13e0ce1354295379b00756871738e8.bindTooltip(
+                `<div>
+                     Oliva | Risk: 8.41
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a2ca5f7d793b31a005ba1658c5738b17 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.16605, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_4c78b5280b1fbcef2307337a27f03b80 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5d3d5433cdb32661e09eb3ea7dbc4e51 = $(`<div id="html_5d3d5433cdb32661e09eb3ea7dbc4e51" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Shaw, Leah         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1285184630<br>         <hr>         <b>Risk Score:</b> 8.33<br>         <b>Total Cost:</b> $1,781,537.60<br>         <b>Total Claims:</b> 268<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_4c78b5280b1fbcef2307337a27f03b80.setContent(html_5d3d5433cdb32661e09eb3ea7dbc4e51);
+            
+        
+
+        circle_marker_a2ca5f7d793b31a005ba1658c5738b17.bindPopup(popup_4c78b5280b1fbcef2307337a27f03b80)
+        ;
+
+        
+    
+    
+            circle_marker_a2ca5f7d793b31a005ba1658c5738b17.bindTooltip(
+                `<div>
+                     Shaw | Risk: 8.33
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_af6d8ca316cfc9ca1667a4d22b1d0cfc = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.065349999999999, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_593fa6b566b4b2cd041585bf1a572d90 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb2097e005b39a7f159ee9763cee16f5 = $(`<div id="html_bb2097e005b39a7f159ee9763cee16f5" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Hinojosa, Kim         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1366754715<br>         <hr>         <b>Risk Score:</b> 8.13<br>         <b>Total Cost:</b> $18,182,903.02<br>         <b>Total Claims:</b> 1,855<br>         <b>Unique Drugs:</b> 11<br>         <b>Total Flags:</b> 20     </div>     </div>`)[0];
+                popup_593fa6b566b4b2cd041585bf1a572d90.setContent(html_bb2097e005b39a7f159ee9763cee16f5);
+            
+        
+
+        circle_marker_af6d8ca316cfc9ca1667a4d22b1d0cfc.bindPopup(popup_593fa6b566b4b2cd041585bf1a572d90)
+        ;
+
+        
+    
+    
+            circle_marker_af6d8ca316cfc9ca1667a4d22b1d0cfc.bindTooltip(
+                `<div>
+                     Hinojosa | Risk: 8.13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_870154f72fd408c575d7f77b27984042 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.8345, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_61da966bbbf7e311ad5418d99dac5426 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7ceb8a4251e831bf2c977c163ba94a88 = $(`<div id="html_7ceb8a4251e831bf2c977c163ba94a88" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Williams, Shae         </h4>         <b>Specialty:</b> Podiatry<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1588993505<br>         <hr>         <b>Risk Score:</b> 7.67<br>         <b>Total Cost:</b> $118,911.33<br>         <b>Total Claims:</b> 25<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 1     </div>     </div>`)[0];
+                popup_61da966bbbf7e311ad5418d99dac5426.setContent(html_7ceb8a4251e831bf2c977c163ba94a88);
+            
+        
+
+        circle_marker_870154f72fd408c575d7f77b27984042.bindPopup(popup_61da966bbbf7e311ad5418d99dac5426)
+        ;
+
+        
+    
+    
+            circle_marker_870154f72fd408c575d7f77b27984042.bindTooltip(
+                `<div>
+                     Williams | Risk: 7.67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29a495375b7ff6ea2aff787cf8b0ba21 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.81575, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_ee30336b1f6556e9e9db4f0fa48040ed = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b172a28537fcb25772dbb7a261a8ed5a = $(`<div id="html_b172a28537fcb25772dbb7a261a8ed5a" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Lynn, Alice         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1023108933<br>         <hr>         <b>Risk Score:</b> 7.63<br>         <b>Total Cost:</b> $5,186,479.91<br>         <b>Total Claims:</b> 695<br>         <b>Unique Drugs:</b> 7<br>         <b>Total Flags:</b> 10     </div>     </div>`)[0];
+                popup_ee30336b1f6556e9e9db4f0fa48040ed.setContent(html_b172a28537fcb25772dbb7a261a8ed5a);
+            
+        
+
+        circle_marker_29a495375b7ff6ea2aff787cf8b0ba21.bindPopup(popup_ee30336b1f6556e9e9db4f0fa48040ed)
+        ;
+
+        
+    
+    
+            circle_marker_29a495375b7ff6ea2aff787cf8b0ba21.bindTooltip(
+                `<div>
+                     Lynn | Risk: 7.63
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_acdb2b4d28283925ab5a9e952d0f77f9 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.736650000000001, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_5d1a0118bdaadd0dbd176b7f7cf9a722 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9b96bcdaa9aa42d8959bee5043d6a7c2 = $(`<div id="html_9b96bcdaa9aa42d8959bee5043d6a7c2" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Lim, Zita         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1659449536<br>         <hr>         <b>Risk Score:</b> 7.47<br>         <b>Total Cost:</b> $4,057,713.91<br>         <b>Total Claims:</b> 327<br>         <b>Unique Drugs:</b> 5<br>         <b>Total Flags:</b> 5     </div>     </div>`)[0];
+                popup_5d1a0118bdaadd0dbd176b7f7cf9a722.setContent(html_9b96bcdaa9aa42d8959bee5043d6a7c2);
+            
+        
+
+        circle_marker_acdb2b4d28283925ab5a9e952d0f77f9.bindPopup(popup_5d1a0118bdaadd0dbd176b7f7cf9a722)
+        ;
+
+        
+    
+    
+            circle_marker_acdb2b4d28283925ab5a9e952d0f77f9.bindTooltip(
+                `<div>
+                     Lim | Risk: 7.47
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e37999a1433f8dd9984473de7e223a1c = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.7003, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_c3e5f7fa525f84959858e87800c3dbe8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8c3c8b6a39e4f6dae6a2536c0ada9c43 = $(`<div id="html_8c3c8b6a39e4f6dae6a2536c0ada9c43" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Pham, Tram         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1811367451<br>         <hr>         <b>Risk Score:</b> 7.40<br>         <b>Total Cost:</b> $1,726,241.26<br>         <b>Total Claims:</b> 302<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 5     </div>     </div>`)[0];
+                popup_c3e5f7fa525f84959858e87800c3dbe8.setContent(html_8c3c8b6a39e4f6dae6a2536c0ada9c43);
+            
+        
+
+        circle_marker_e37999a1433f8dd9984473de7e223a1c.bindPopup(popup_c3e5f7fa525f84959858e87800c3dbe8)
+        ;
+
+        
+    
+    
+            circle_marker_e37999a1433f8dd9984473de7e223a1c.bindTooltip(
+                `<div>
+                     Pham | Risk: 7.40
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_788ef6f4adf6a0e45653995d33cbd9b2 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.56665, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_3735dfb7a711cd6b8fa194e7ef512d3e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0df67f95aef1516f091ea0dada55c58 = $(`<div id="html_f0df67f95aef1516f091ea0dada55c58" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Lee, Hans         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1144470758<br>         <hr>         <b>Risk Score:</b> 7.13<br>         <b>Total Cost:</b> $6,289,331.35<br>         <b>Total Claims:</b> 501<br>         <b>Unique Drugs:</b> 7<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_3735dfb7a711cd6b8fa194e7ef512d3e.setContent(html_f0df67f95aef1516f091ea0dada55c58);
+            
+        
+
+        circle_marker_788ef6f4adf6a0e45653995d33cbd9b2.bindPopup(popup_3735dfb7a711cd6b8fa194e7ef512d3e)
+        ;
+
+        
+    
+    
+            circle_marker_788ef6f4adf6a0e45653995d33cbd9b2.bindTooltip(
+                `<div>
+                     Lee | Risk: 7.13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1448279e54753471407928046f464eff = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.509450000000001, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_0a13d05767fe5f0e3969369e4f2e5691 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4738953663a03d139cbdc570eef1c787 = $(`<div id="html_4738953663a03d139cbdc570eef1c787" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Matthews, Amanda         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1265789598<br>         <hr>         <b>Risk Score:</b> 7.02<br>         <b>Total Cost:</b> $812,803.51<br>         <b>Total Claims:</b> 140<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 8     </div>     </div>`)[0];
+                popup_0a13d05767fe5f0e3969369e4f2e5691.setContent(html_4738953663a03d139cbdc570eef1c787);
+            
+        
+
+        circle_marker_1448279e54753471407928046f464eff.bindPopup(popup_0a13d05767fe5f0e3969369e4f2e5691)
+        ;
+
+        
+    
+    
+            circle_marker_1448279e54753471407928046f464eff.bindTooltip(
+                `<div>
+                     Matthews | Risk: 7.02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1217800bee8f42f57b2d9cc79952caa6 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.23305, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_7fd44a56cf8e93a34644928c20bda00b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_aa85924d353fc6d69247f2b08f41b19e = $(`<div id="html_aa85924d353fc6d69247f2b08f41b19e" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Caraballo-Gonzalez, Edna         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1578698940<br>         <hr>         <b>Risk Score:</b> 6.47<br>         <b>Total Cost:</b> $10,273,947.74<br>         <b>Total Claims:</b> 1,399<br>         <b>Unique Drugs:</b> 10<br>         <b>Total Flags:</b> 23     </div>     </div>`)[0];
+                popup_7fd44a56cf8e93a34644928c20bda00b.setContent(html_aa85924d353fc6d69247f2b08f41b19e);
+            
+        
+
+        circle_marker_1217800bee8f42f57b2d9cc79952caa6.bindPopup(popup_7fd44a56cf8e93a34644928c20bda00b)
+        ;
+
+        
+    
+    
+            circle_marker_1217800bee8f42f57b2d9cc79952caa6.bindTooltip(
+                `<div>
+                     Caraballo-Gonzalez | Risk: 6.47
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8286788ac271bde8e1db3bcc9ad6ed93 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.233, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_d3040293a14329fcc24bf7b5497c3ae3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ec03a36583fdfd857642a43492c02edb = $(`<div id="html_ec03a36583fdfd857642a43492c02edb" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Jain, Nitin         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1659459113<br>         <hr>         <b>Risk Score:</b> 6.47<br>         <b>Total Cost:</b> $289,278.12<br>         <b>Total Claims:</b> 45<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_d3040293a14329fcc24bf7b5497c3ae3.setContent(html_ec03a36583fdfd857642a43492c02edb);
+            
+        
+
+        circle_marker_8286788ac271bde8e1db3bcc9ad6ed93.bindPopup(popup_d3040293a14329fcc24bf7b5497c3ae3)
+        ;
+
+        
+    
+    
+            circle_marker_8286788ac271bde8e1db3bcc9ad6ed93.bindTooltip(
+                `<div>
+                     Jain | Risk: 6.47
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_809640ea1e55e605ca7c201200906b81 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.11155, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_6d7685e12a697cef5805e5ed36e5a236 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fe7ef50728753287eb6ea6f2fee9a4c4 = $(`<div id="html_fe7ef50728753287eb6ea6f2fee9a4c4" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Turer, Laura         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1790144970<br>         <hr>         <b>Risk Score:</b> 6.22<br>         <b>Total Cost:</b> $1,217,125.54<br>         <b>Total Claims:</b> 191<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_6d7685e12a697cef5805e5ed36e5a236.setContent(html_fe7ef50728753287eb6ea6f2fee9a4c4);
+            
+        
+
+        circle_marker_809640ea1e55e605ca7c201200906b81.bindPopup(popup_6d7685e12a697cef5805e5ed36e5a236)
+        ;
+
+        
+    
+    
+            circle_marker_809640ea1e55e605ca7c201200906b81.bindTooltip(
+                `<div>
+                     Turer | Risk: 6.22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4939fda5ac9ff53b64b9cb05bf07da3a = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.88475, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_9b1969257d2e106ce2c4abdcfd975c66 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8f143c62159d338a3c3a1988274be8cb = $(`<div id="html_8f143c62159d338a3c3a1988274be8cb" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Cook, Robin         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1205592243<br>         <hr>         <b>Risk Score:</b> 5.77<br>         <b>Total Cost:</b> $3,023,610.64<br>         <b>Total Claims:</b> 248<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_9b1969257d2e106ce2c4abdcfd975c66.setContent(html_8f143c62159d338a3c3a1988274be8cb);
+            
+        
+
+        circle_marker_4939fda5ac9ff53b64b9cb05bf07da3a.bindPopup(popup_9b1969257d2e106ce2c4abdcfd975c66)
+        ;
+
+        
+    
+    
+            circle_marker_4939fda5ac9ff53b64b9cb05bf07da3a.bindTooltip(
+                `<div>
+                     Cook | Risk: 5.77
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_25faf7c3effddd0299085692347aad14 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.807549999999999, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_e49bbfee54c413f9725cd41da678bb84 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1cef42760f34f1a87e42a36072106b9e = $(`<div id="html_1cef42760f34f1a87e42a36072106b9e" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Gay, Carl         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1417392770<br>         <hr>         <b>Risk Score:</b> 5.62<br>         <b>Total Cost:</b> $1,313,343.85<br>         <b>Total Claims:</b> 124<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_e49bbfee54c413f9725cd41da678bb84.setContent(html_1cef42760f34f1a87e42a36072106b9e);
+            
+        
+
+        circle_marker_25faf7c3effddd0299085692347aad14.bindPopup(popup_e49bbfee54c413f9725cd41da678bb84)
+        ;
+
+        
+    
+    
+            circle_marker_25faf7c3effddd0299085692347aad14.bindTooltip(
+                `<div>
+                     Gay | Risk: 5.62
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_604bbc849be791e2a09de3c509c9fd69 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.79825, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_f1e655d606c65b0153448f945afd64d1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7d18f70ce5c90a0a460cd9b7c68606d6 = $(`<div id="html_7d18f70ce5c90a0a460cd9b7c68606d6" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Quijano, Astrid         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1912578576<br>         <hr>         <b>Risk Score:</b> 5.60<br>         <b>Total Cost:</b> $2,437,741.26<br>         <b>Total Claims:</b> 365<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 7     </div>     </div>`)[0];
+                popup_f1e655d606c65b0153448f945afd64d1.setContent(html_7d18f70ce5c90a0a460cd9b7c68606d6);
+            
+        
+
+        circle_marker_604bbc849be791e2a09de3c509c9fd69.bindPopup(popup_f1e655d606c65b0153448f945afd64d1)
+        ;
+
+        
+    
+    
+            circle_marker_604bbc849be791e2a09de3c509c9fd69.bindTooltip(
+                `<div>
+                     Quijano | Risk: 5.60
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_57a9832dc8afd0bc2d63813abe3d3fac = L.circleMarker(
+                [32.7555, -97.3308],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.788499999999999, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_868d6abb03f0e8fb878ccad6dd979ce4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2ed874b6dac1fe748b872ded9a8fe49f = $(`<div id="html_2ed874b6dac1fe748b872ded9a8fe49f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Fasanmi, Esther         </h4>         <b>Specialty:</b> Pharmacist<br>         <b>City:</b> Fort Worth<br>         <b>NPI:</b> 1679027759<br>         <hr>         <b>Risk Score:</b> 5.58<br>         <b>Total Cost:</b> $716,231.28<br>         <b>Total Claims:</b> 106<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_868d6abb03f0e8fb878ccad6dd979ce4.setContent(html_2ed874b6dac1fe748b872ded9a8fe49f);
+            
+        
+
+        circle_marker_57a9832dc8afd0bc2d63813abe3d3fac.bindPopup(popup_868d6abb03f0e8fb878ccad6dd979ce4)
+        ;
+
+        
+    
+    
+            circle_marker_57a9832dc8afd0bc2d63813abe3d3fac.bindTooltip(
+                `<div>
+                     Fasanmi | Risk: 5.58
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fbeeaa469c5c9485d925ca56487ac00b = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.71785, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_31a6bde2e887be7676e3bef2e96940c7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f80ddf76f1a092c27729cdeadd6a6303 = $(`<div id="html_f80ddf76f1a092c27729cdeadd6a6303" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Ayyar, Monika         </h4>         <b>Specialty:</b> Physical Medicine And Rehabilitation<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1760451181<br>         <hr>         <b>Risk Score:</b> 5.44<br>         <b>Total Cost:</b> $148,721.35<br>         <b>Total Claims:</b> 85<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_31a6bde2e887be7676e3bef2e96940c7.setContent(html_f80ddf76f1a092c27729cdeadd6a6303);
+            
+        
+
+        circle_marker_fbeeaa469c5c9485d925ca56487ac00b.bindPopup(popup_31a6bde2e887be7676e3bef2e96940c7)
+        ;
+
+        
+    
+    
+            circle_marker_fbeeaa469c5c9485d925ca56487ac00b.bindTooltip(
+                `<div>
+                     Ayyar | Risk: 5.44
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_471c7ad662a054485a8f112281ae6f4d = L.circleMarker(
+                [35.222, -101.8313],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.70455, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_619d44e5ceb76d7dfb2357e42a58e5c3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e5d1c88f73fd96d672610be1be2aca0e = $(`<div id="html_e5d1c88f73fd96d672610be1be2aca0e" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Hudson, Arlene         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Amarillo<br>         <b>NPI:</b> 1760594428<br>         <hr>         <b>Risk Score:</b> 5.41<br>         <b>Total Cost:</b> $398,210.89<br>         <b>Total Claims:</b> 97<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_619d44e5ceb76d7dfb2357e42a58e5c3.setContent(html_e5d1c88f73fd96d672610be1be2aca0e);
+            
+        
+
+        circle_marker_471c7ad662a054485a8f112281ae6f4d.bindPopup(popup_619d44e5ceb76d7dfb2357e42a58e5c3)
+        ;
+
+        
+    
+    
+            circle_marker_471c7ad662a054485a8f112281ae6f4d.bindTooltip(
+                `<div>
+                     Hudson | Risk: 5.41
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_99291d1a6ad0e66be319a9eb3747f3fb = L.circleMarker(
+                [32.7555, -97.3308],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.6815, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_10cc4f8a9bebd1cb5bfed7c3fb5c4d77 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7f46be3da7d53f789358ba99a60ddb25 = $(`<div id="html_7f46be3da7d53f789358ba99a60ddb25" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Murthy, Kenton         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Fort Worth<br>         <b>NPI:</b> 1891042339<br>         <hr>         <b>Risk Score:</b> 5.36<br>         <b>Total Cost:</b> $609,383.58<br>         <b>Total Claims:</b> 151<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_10cc4f8a9bebd1cb5bfed7c3fb5c4d77.setContent(html_7f46be3da7d53f789358ba99a60ddb25);
+            
+        
+
+        circle_marker_99291d1a6ad0e66be319a9eb3747f3fb.bindPopup(popup_10cc4f8a9bebd1cb5bfed7c3fb5c4d77)
+        ;
+
+        
+    
+    
+            circle_marker_99291d1a6ad0e66be319a9eb3747f3fb.bindTooltip(
+                `<div>
+                     Murthy | Risk: 5.36
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b525c509c72b51a416a8eb1281d4f85 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.64795, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_97934c298ca757e57ee7181791840e88 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0650f1b901447991e5a1e7be2fec7a5a = $(`<div id="html_0650f1b901447991e5a1e7be2fec7a5a" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Levine, Mark         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1285790170<br>         <hr>         <b>Risk Score:</b> 5.30<br>         <b>Total Cost:</b> $234,986.22<br>         <b>Total Claims:</b> 58<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_97934c298ca757e57ee7181791840e88.setContent(html_0650f1b901447991e5a1e7be2fec7a5a);
+            
+        
+
+        circle_marker_9b525c509c72b51a416a8eb1281d4f85.bindPopup(popup_97934c298ca757e57ee7181791840e88)
+        ;
+
+        
+    
+    
+            circle_marker_9b525c509c72b51a416a8eb1281d4f85.bindTooltip(
+                `<div>
+                     Levine | Risk: 5.30
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c8b8baac0c2f7278d608cdb67636106 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.64485, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_56c618231bad97df6af197d039017c9d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_812332ce77caf8a6b480b1c03e660803 = $(`<div id="html_812332ce77caf8a6b480b1c03e660803" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Patel, Sonia         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1568817526<br>         <hr>         <b>Risk Score:</b> 5.29<br>         <b>Total Cost:</b> $1,918,300.55<br>         <b>Total Claims:</b> 446<br>         <b>Unique Drugs:</b> 5<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_56c618231bad97df6af197d039017c9d.setContent(html_812332ce77caf8a6b480b1c03e660803);
+            
+        
+
+        circle_marker_4c8b8baac0c2f7278d608cdb67636106.bindPopup(popup_56c618231bad97df6af197d039017c9d)
+        ;
+
+        
+    
+    
+            circle_marker_4c8b8baac0c2f7278d608cdb67636106.bindTooltip(
+                `<div>
+                     Patel | Risk: 5.29
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5e3289a20e4fc5746006d062cca4636e = L.circleMarker(
+                [26.2034, -98.23],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.63805, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_2f8acf29f5490353a02f404b432a621b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb563f999a3663d97e93c7822012c87f = $(`<div id="html_bb563f999a3663d97e93c7822012c87f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Myers Mitchell, Frances         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Mcallen<br>         <b>NPI:</b> 1669470043<br>         <hr>         <b>Risk Score:</b> 5.28<br>         <b>Total Cost:</b> $849,395.22<br>         <b>Total Claims:</b> 201<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_2f8acf29f5490353a02f404b432a621b.setContent(html_bb563f999a3663d97e93c7822012c87f);
+            
+        
+
+        circle_marker_5e3289a20e4fc5746006d062cca4636e.bindPopup(popup_2f8acf29f5490353a02f404b432a621b)
+        ;
+
+        
+    
+    
+            circle_marker_5e3289a20e4fc5746006d062cca4636e.bindTooltip(
+                `<div>
+                     Myers Mitchell | Risk: 5.28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_51cf6990eb2674f06b2abee8d4c05b17 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#f57c00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f57c00", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.60985, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_adfbddc170399cc61aa12380ffff3775 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cf8b1727c963e6be8acb2b651eda2eb8 = $(`<div id="html_cf8b1727c963e6be8acb2b651eda2eb8" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #f57c00; margin-bottom: 5px;'>             ⚠️ Nguyen, Dan         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1952756983<br>         <hr>         <b>Risk Score:</b> 5.22<br>         <b>Total Cost:</b> $396,870.97<br>         <b>Total Claims:</b> 100<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_adfbddc170399cc61aa12380ffff3775.setContent(html_cf8b1727c963e6be8acb2b651eda2eb8);
+            
+        
+
+        circle_marker_51cf6990eb2674f06b2abee8d4c05b17.bindPopup(popup_adfbddc170399cc61aa12380ffff3775)
+        ;
+
+        
+    
+    
+            circle_marker_51cf6990eb2674f06b2abee8d4c05b17.bindTooltip(
+                `<div>
+                     Nguyen | Risk: 5.22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d85e4206597144c22ab8658215d8cef1 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.38625, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_7c0418100bd863bf7a095a9e85c1bafd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5ca9cbd0b4ccebdec99ba7d76582f568 = $(`<div id="html_5ca9cbd0b4ccebdec99ba7d76582f568" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Tran, Jennifer         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1407360670<br>         <hr>         <b>Risk Score:</b> 4.77<br>         <b>Total Cost:</b> $2,730,368.85<br>         <b>Total Claims:</b> 429<br>         <b>Unique Drugs:</b> 5<br>         <b>Total Flags:</b> 8     </div>     </div>`)[0];
+                popup_7c0418100bd863bf7a095a9e85c1bafd.setContent(html_5ca9cbd0b4ccebdec99ba7d76582f568);
+            
+        
+
+        circle_marker_d85e4206597144c22ab8658215d8cef1.bindPopup(popup_7c0418100bd863bf7a095a9e85c1bafd)
+        ;
+
+        
+    
+    
+            circle_marker_d85e4206597144c22ab8658215d8cef1.bindTooltip(
+                `<div>
+                     Tran | Risk: 4.77
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0ecadb89d148fd7727efb3a154c6cc68 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.379950000000001, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_653bb515aef326f3e9985b484aad4735 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_94a8eeccc69bf45f35a1652a9084db77 = $(`<div id="html_94a8eeccc69bf45f35a1652a9084db77" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Proenca-Afonso, Ingrid         </h4>         <b>Specialty:</b> Dentist<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1407901903<br>         <hr>         <b>Risk Score:</b> 4.76<br>         <b>Total Cost:</b> $2,325.26<br>         <b>Total Claims:</b> 47<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_653bb515aef326f3e9985b484aad4735.setContent(html_94a8eeccc69bf45f35a1652a9084db77);
+            
+        
+
+        circle_marker_0ecadb89d148fd7727efb3a154c6cc68.bindPopup(popup_653bb515aef326f3e9985b484aad4735)
+        ;
+
+        
+    
+    
+            circle_marker_0ecadb89d148fd7727efb3a154c6cc68.bindTooltip(
+                `<div>
+                     Proenca-Afonso | Risk: 4.76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5a58a07643aca8aac3a854681e90d157 = L.circleMarker(
+                [32.7555, -97.3308],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.3689, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_ed90daa13cf1c2205fefd516558843b6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8dfff9f708412b3bc3ef8d5923041df7 = $(`<div id="html_8dfff9f708412b3bc3ef8d5923041df7" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Jafry, Raza         </h4>         <b>Specialty:</b> Hospitalist<br>         <b>City:</b> Fort Worth<br>         <b>NPI:</b> 1073629986<br>         <hr>         <b>Risk Score:</b> 4.74<br>         <b>Total Cost:</b> $2,781,858.32<br>         <b>Total Claims:</b> 1,144<br>         <b>Unique Drugs:</b> 9<br>         <b>Total Flags:</b> 12     </div>     </div>`)[0];
+                popup_ed90daa13cf1c2205fefd516558843b6.setContent(html_8dfff9f708412b3bc3ef8d5923041df7);
+            
+        
+
+        circle_marker_5a58a07643aca8aac3a854681e90d157.bindPopup(popup_ed90daa13cf1c2205fefd516558843b6)
+        ;
+
+        
+    
+    
+            circle_marker_5a58a07643aca8aac3a854681e90d157.bindTooltip(
+                `<div>
+                     Jafry | Risk: 4.74
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b4d5a9c09eaee6965a53816f8de8ad8 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.3509, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_c422a11fffb4ef8f397579bc03bad788 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0afb86f88e707ce5c3cb20233f2069e8 = $(`<div id="html_0afb86f88e707ce5c3cb20233f2069e8" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Hall, Kanisha         </h4>         <b>Specialty:</b> Anesthesiology<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1861669186<br>         <hr>         <b>Risk Score:</b> 4.70<br>         <b>Total Cost:</b> $184,237.45<br>         <b>Total Claims:</b> 81<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_c422a11fffb4ef8f397579bc03bad788.setContent(html_0afb86f88e707ce5c3cb20233f2069e8);
+            
+        
+
+        circle_marker_8b4d5a9c09eaee6965a53816f8de8ad8.bindPopup(popup_c422a11fffb4ef8f397579bc03bad788)
+        ;
+
+        
+    
+    
+            circle_marker_8b4d5a9c09eaee6965a53816f8de8ad8.bindTooltip(
+                `<div>
+                     Hall | Risk: 4.70
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ca8aaf08b17092ea678d13631586bfc9 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.3367, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_d637b0e9fc1507b60c3a117c3439aa7d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d93dc90e4ae86738a9c22b101ecfd345 = $(`<div id="html_d93dc90e4ae86738a9c22b101ecfd345" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Sukholutsky, Victoria         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1922399294<br>         <hr>         <b>Risk Score:</b> 4.67<br>         <b>Total Cost:</b> $1,804,722.29<br>         <b>Total Claims:</b> 401<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_d637b0e9fc1507b60c3a117c3439aa7d.setContent(html_d93dc90e4ae86738a9c22b101ecfd345);
+            
+        
+
+        circle_marker_ca8aaf08b17092ea678d13631586bfc9.bindPopup(popup_d637b0e9fc1507b60c3a117c3439aa7d)
+        ;
+
+        
+    
+    
+            circle_marker_ca8aaf08b17092ea678d13631586bfc9.bindTooltip(
+                `<div>
+                     Sukholutsky | Risk: 4.67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29802bc46af9da525d72f710077c94f6 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.332, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_41395155e8e09a1eadebe01b9683931e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a4fa21f864c5fcd79bf0d88986a7fcc7 = $(`<div id="html_a4fa21f864c5fcd79bf0d88986a7fcc7" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Choi, Maximilian         </h4>         <b>Specialty:</b> General Surgery<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1023647864<br>         <hr>         <b>Risk Score:</b> 4.66<br>         <b>Total Cost:</b> $114,836.44<br>         <b>Total Claims:</b> 50<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_41395155e8e09a1eadebe01b9683931e.setContent(html_a4fa21f864c5fcd79bf0d88986a7fcc7);
+            
+        
+
+        circle_marker_29802bc46af9da525d72f710077c94f6.bindPopup(popup_41395155e8e09a1eadebe01b9683931e)
+        ;
+
+        
+    
+    
+            circle_marker_29802bc46af9da525d72f710077c94f6.bindTooltip(
+                `<div>
+                     Choi | Risk: 4.66
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fdca802d11a336a826957614d75c972c = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.18445, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_c2f1cd31bdfb4e812b54487746001bfb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7eef2ae94ca6388aa31aa44ca5d23009 = $(`<div id="html_7eef2ae94ca6388aa31aa44ca5d23009" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Govind, Anusha         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1710320551<br>         <hr>         <b>Risk Score:</b> 4.37<br>         <b>Total Cost:</b> $536,270.16<br>         <b>Total Claims:</b> 124<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_c2f1cd31bdfb4e812b54487746001bfb.setContent(html_7eef2ae94ca6388aa31aa44ca5d23009);
+            
+        
+
+        circle_marker_fdca802d11a336a826957614d75c972c.bindPopup(popup_c2f1cd31bdfb4e812b54487746001bfb)
+        ;
+
+        
+    
+    
+            circle_marker_fdca802d11a336a826957614d75c972c.bindTooltip(
+                `<div>
+                     Govind | Risk: 4.37
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4a6fbc7e137d9dca52de9cbdc9a0d47f = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.1778, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_1f5b55dfb17eb65cd1db4a0f402ee2d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c85e87ee025aa8a3d4812311b1d816c5 = $(`<div id="html_c85e87ee025aa8a3d4812311b1d816c5" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Rosenthal, Emilija         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1710485479<br>         <hr>         <b>Risk Score:</b> 4.36<br>         <b>Total Cost:</b> $390,865.54<br>         <b>Total Claims:</b> 83<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_1f5b55dfb17eb65cd1db4a0f402ee2d7.setContent(html_c85e87ee025aa8a3d4812311b1d816c5);
+            
+        
+
+        circle_marker_4a6fbc7e137d9dca52de9cbdc9a0d47f.bindPopup(popup_1f5b55dfb17eb65cd1db4a0f402ee2d7)
+        ;
+
+        
+    
+    
+            circle_marker_4a6fbc7e137d9dca52de9cbdc9a0d47f.bindTooltip(
+                `<div>
+                     Rosenthal | Risk: 4.36
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d80bb0c374930bc43c21896456664a1f = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.17355, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_604fc806e8342f15f591ed2f856c7c61 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_df48c23081ef3f1611275a427c4f31e2 = $(`<div id="html_df48c23081ef3f1611275a427c4f31e2" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Miller, Jill         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1932370038<br>         <hr>         <b>Risk Score:</b> 4.35<br>         <b>Total Cost:</b> $1,089,998.22<br>         <b>Total Claims:</b> 172<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_604fc806e8342f15f591ed2f856c7c61.setContent(html_df48c23081ef3f1611275a427c4f31e2);
+            
+        
+
+        circle_marker_d80bb0c374930bc43c21896456664a1f.bindPopup(popup_604fc806e8342f15f591ed2f856c7c61)
+        ;
+
+        
+    
+    
+            circle_marker_d80bb0c374930bc43c21896456664a1f.bindTooltip(
+                `<div>
+                     Miller | Risk: 4.35
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e690612f8e65f794e3e837053581134f = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.1682, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_eb02f8fa70bdaa1190cbb0285f19debf = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3a4634dc469abf0b6619f36f2a94561f = $(`<div id="html_3a4634dc469abf0b6619f36f2a94561f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Allen, Valerie         </h4>         <b>Specialty:</b> General Surgery<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1760897045<br>         <hr>         <b>Risk Score:</b> 4.34<br>         <b>Total Cost:</b> $606,539.81<br>         <b>Total Claims:</b> 184<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_eb02f8fa70bdaa1190cbb0285f19debf.setContent(html_3a4634dc469abf0b6619f36f2a94561f);
+            
+        
+
+        circle_marker_e690612f8e65f794e3e837053581134f.bindPopup(popup_eb02f8fa70bdaa1190cbb0285f19debf)
+        ;
+
+        
+    
+    
+            circle_marker_e690612f8e65f794e3e837053581134f.bindTooltip(
+                `<div>
+                     Allen | Risk: 4.34
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_483b8b1d54fbf51de766df904c36bc16 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.11785, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_beaab9ce7b95c68302c5c6ad565927f0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1a03fbc982e438990c89ddef0d6e250e = $(`<div id="html_1a03fbc982e438990c89ddef0d6e250e" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Vigneswaran, Nadarajah         </h4>         <b>Specialty:</b> Oral Surgery (Dentist Only)<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1750475224<br>         <hr>         <b>Risk Score:</b> 4.24<br>         <b>Total Cost:</b> $29,400.91<br>         <b>Total Claims:</b> 627<br>         <b>Unique Drugs:</b> 10<br>         <b>Total Flags:</b> 15     </div>     </div>`)[0];
+                popup_beaab9ce7b95c68302c5c6ad565927f0.setContent(html_1a03fbc982e438990c89ddef0d6e250e);
+            
+        
+
+        circle_marker_483b8b1d54fbf51de766df904c36bc16.bindPopup(popup_beaab9ce7b95c68302c5c6ad565927f0)
+        ;
+
+        
+    
+    
+            circle_marker_483b8b1d54fbf51de766df904c36bc16.bindTooltip(
+                `<div>
+                     Vigneswaran | Risk: 4.24
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2ec9c9adb82d56893fa94466ce9392b1 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.048, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_ec50c4a9c7870ac14f2be4806743bd7a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a53f636a13c46b5c83ba6f1c39d2ffc1 = $(`<div id="html_a53f636a13c46b5c83ba6f1c39d2ffc1" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Thomas, Glenty         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1629489505<br>         <hr>         <b>Risk Score:</b> 4.10<br>         <b>Total Cost:</b> $886,201.91<br>         <b>Total Claims:</b> 184<br>         <b>Unique Drugs:</b> 6<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_ec50c4a9c7870ac14f2be4806743bd7a.setContent(html_a53f636a13c46b5c83ba6f1c39d2ffc1);
+            
+        
+
+        circle_marker_2ec9c9adb82d56893fa94466ce9392b1.bindPopup(popup_ec50c4a9c7870ac14f2be4806743bd7a)
+        ;
+
+        
+    
+    
+            circle_marker_2ec9c9adb82d56893fa94466ce9392b1.bindTooltip(
+                `<div>
+                     Thomas | Risk: 4.10
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fc2edb1e218764f9d1862d497c1899f4 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.04325, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_5c0fa877e80e0997ccb876f6cfa75d6d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f6377776cc175121aa3467f7975fafdd = $(`<div id="html_f6377776cc175121aa3467f7975fafdd" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Allbritton, Dale         </h4>         <b>Specialty:</b> Dentist<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1205832714<br>         <hr>         <b>Risk Score:</b> 4.09<br>         <b>Total Cost:</b> $380.18<br>         <b>Total Claims:</b> 40<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 1     </div>     </div>`)[0];
+                popup_5c0fa877e80e0997ccb876f6cfa75d6d.setContent(html_f6377776cc175121aa3467f7975fafdd);
+            
+        
+
+        circle_marker_fc2edb1e218764f9d1862d497c1899f4.bindPopup(popup_5c0fa877e80e0997ccb876f6cfa75d6d)
+        ;
+
+        
+    
+    
+            circle_marker_fc2edb1e218764f9d1862d497c1899f4.bindTooltip(
+                `<div>
+                     Allbritton | Risk: 4.09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1f39f8bcbbcc31be7e3c7112f9f72837 = L.circleMarker(
+                [30.2672, -97.7431],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.02075, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_c33363edb5b6e19ef3c65e984c6885f3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c02cb5d0e861898f52759bd6688c6f50 = $(`<div id="html_c02cb5d0e861898f52759bd6688c6f50" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Mondy, Kristin         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Austin<br>         <b>NPI:</b> 1265459762<br>         <hr>         <b>Risk Score:</b> 4.04<br>         <b>Total Cost:</b> $591,488.61<br>         <b>Total Claims:</b> 147<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_c33363edb5b6e19ef3c65e984c6885f3.setContent(html_c02cb5d0e861898f52759bd6688c6f50);
+            
+        
+
+        circle_marker_1f39f8bcbbcc31be7e3c7112f9f72837.bindPopup(popup_c33363edb5b6e19ef3c65e984c6885f3)
+        ;
+
+        
+    
+    
+            circle_marker_1f39f8bcbbcc31be7e3c7112f9f72837.bindTooltip(
+                `<div>
+                     Mondy | Risk: 4.04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_79bc8344c81ce31ae7f03fb73a0c11f5 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0169, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_ce7fb0c0c14767d8c8f998f11dfa4c9f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b35ab39719f9d7565b407904b83d88fe = $(`<div id="html_b35ab39719f9d7565b407904b83d88fe" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Alkhouri, Naim         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1134336662<br>         <hr>         <b>Risk Score:</b> 4.03<br>         <b>Total Cost:</b> $1,244,048.26<br>         <b>Total Claims:</b> 666<br>         <b>Unique Drugs:</b> 8<br>         <b>Total Flags:</b> 5     </div>     </div>`)[0];
+                popup_ce7fb0c0c14767d8c8f998f11dfa4c9f.setContent(html_b35ab39719f9d7565b407904b83d88fe);
+            
+        
+
+        circle_marker_79bc8344c81ce31ae7f03fb73a0c11f5.bindPopup(popup_ce7fb0c0c14767d8c8f998f11dfa4c9f)
+        ;
+
+        
+    
+    
+            circle_marker_79bc8344c81ce31ae7f03fb73a0c11f5.bindTooltip(
+                `<div>
+                     Alkhouri | Risk: 4.03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e45bd628516e9351d8153a6c576453c1 = L.circleMarker(
+                [31.7619, -106.485],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0107, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_3359f3e9f098e2e03d340108ca80332e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_de14bf93bff2194780e0fa98176acb46 = $(`<div id="html_de14bf93bff2194780e0fa98176acb46" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Costa, Henry         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> El Paso<br>         <b>NPI:</b> 1134125651<br>         <hr>         <b>Risk Score:</b> 4.02<br>         <b>Total Cost:</b> $2,188,044.61<br>         <b>Total Claims:</b> 554<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 8     </div>     </div>`)[0];
+                popup_3359f3e9f098e2e03d340108ca80332e.setContent(html_de14bf93bff2194780e0fa98176acb46);
+            
+        
+
+        circle_marker_e45bd628516e9351d8153a6c576453c1.bindPopup(popup_3359f3e9f098e2e03d340108ca80332e)
+        ;
+
+        
+    
+    
+            circle_marker_e45bd628516e9351d8153a6c576453c1.bindTooltip(
+                `<div>
+                     Costa | Risk: 4.02
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_38a1d3096c99dae85e2fe8ab98fbbc67 = L.circleMarker(
+                [33.5779, -101.8552],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.0066, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_f810d739da765847bea73c401ded978e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7b6e58ef0b68e0999c9993e7081e1c48 = $(`<div id="html_7b6e58ef0b68e0999c9993e7081e1c48" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Hancock, Jeff         </h4>         <b>Specialty:</b> Dentist<br>         <b>City:</b> Lubbock<br>         <b>NPI:</b> 1063576627<br>         <hr>         <b>Risk Score:</b> 4.01<br>         <b>Total Cost:</b> $2,905.27<br>         <b>Total Claims:</b> 169<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_f810d739da765847bea73c401ded978e.setContent(html_7b6e58ef0b68e0999c9993e7081e1c48);
+            
+        
+
+        circle_marker_38a1d3096c99dae85e2fe8ab98fbbc67.bindPopup(popup_f810d739da765847bea73c401ded978e)
+        ;
+
+        
+    
+    
+            circle_marker_38a1d3096c99dae85e2fe8ab98fbbc67.bindTooltip(
+                `<div>
+                     Hancock | Risk: 4.01
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8442e5b2091f48d63b3e14d0e75bb21e = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.988199999999999, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_09c346d5630eba03adde0fde8a1366d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_05f4ac237b0cad7840e350e586d33d1b = $(`<div id="html_05f4ac237b0cad7840e350e586d33d1b" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Mellor-Crummey, Lauren         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1306474382<br>         <hr>         <b>Risk Score:</b> 3.98<br>         <b>Total Cost:</b> $154,672.99<br>         <b>Total Claims:</b> 38<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_09c346d5630eba03adde0fde8a1366d7.setContent(html_05f4ac237b0cad7840e350e586d33d1b);
+            
+        
+
+        circle_marker_8442e5b2091f48d63b3e14d0e75bb21e.bindPopup(popup_09c346d5630eba03adde0fde8a1366d7)
+        ;
+
+        
+    
+    
+            circle_marker_8442e5b2091f48d63b3e14d0e75bb21e.bindTooltip(
+                `<div>
+                     Mellor-Crummey | Risk: 3.98
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_73a85f379c597d31e16aec1b8dbe12e7 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.97055, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_f39b55e16c12cb17c3491381ea38035d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e0c0da3bf3dcf8690bd74e06bafd1910 = $(`<div id="html_e0c0da3bf3dcf8690bd74e06bafd1910" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Harden, Scarlett         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1952540924<br>         <hr>         <b>Risk Score:</b> 3.94<br>         <b>Total Cost:</b> $10,346,436.69<br>         <b>Total Claims:</b> 2,451<br>         <b>Unique Drugs:</b> 12<br>         <b>Total Flags:</b> 15     </div>     </div>`)[0];
+                popup_f39b55e16c12cb17c3491381ea38035d.setContent(html_e0c0da3bf3dcf8690bd74e06bafd1910);
+            
+        
+
+        circle_marker_73a85f379c597d31e16aec1b8dbe12e7.bindPopup(popup_f39b55e16c12cb17c3491381ea38035d)
+        ;
+
+        
+    
+    
+            circle_marker_73a85f379c597d31e16aec1b8dbe12e7.bindTooltip(
+                `<div>
+                     Harden | Risk: 3.94
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8973a6972485c8fbee83a9accf97fd37 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.96475, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_11aa273c46031d950401d44be79cd27f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d61780fb6e380353b36514fd98a26c85 = $(`<div id="html_d61780fb6e380353b36514fd98a26c85" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Maya-Ramos, Lisandro         </h4>         <b>Specialty:</b> Student In An Organized Health Care Education/Training Program<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1780211250<br>         <hr>         <b>Risk Score:</b> 3.93<br>         <b>Total Cost:</b> $36,417.31<br>         <b>Total Claims:</b> 27<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_11aa273c46031d950401d44be79cd27f.setContent(html_d61780fb6e380353b36514fd98a26c85);
+            
+        
+
+        circle_marker_8973a6972485c8fbee83a9accf97fd37.bindPopup(popup_11aa273c46031d950401d44be79cd27f)
+        ;
+
+        
+    
+    
+            circle_marker_8973a6972485c8fbee83a9accf97fd37.bindTooltip(
+                `<div>
+                     Maya-Ramos | Risk: 3.93
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d2e2ed62149118e5ab79db894b88d9d8 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.9311, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_e7920c58c73275f8a9c13db8a28e5bb3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_86c0c6d1779fbfd5f88954355f643416 = $(`<div id="html_86c0c6d1779fbfd5f88954355f643416" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Gonzalez, Rene         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1538630355<br>         <hr>         <b>Risk Score:</b> 3.86<br>         <b>Total Cost:</b> $534,128.35<br>         <b>Total Claims:</b> 136<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_e7920c58c73275f8a9c13db8a28e5bb3.setContent(html_86c0c6d1779fbfd5f88954355f643416);
+            
+        
+
+        circle_marker_d2e2ed62149118e5ab79db894b88d9d8.bindPopup(popup_e7920c58c73275f8a9c13db8a28e5bb3)
+        ;
+
+        
+    
+    
+            circle_marker_d2e2ed62149118e5ab79db894b88d9d8.bindTooltip(
+                `<div>
+                     Gonzalez | Risk: 3.86
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d48e56e8f794215591df21872a72bd69 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.92545, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_e756a0dddd3436831c31ecf2752dad79 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_336b19e11469a4a8dec0a974c61f1306 = $(`<div id="html_336b19e11469a4a8dec0a974c61f1306" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Seidel, Benjamin         </h4>         <b>Specialty:</b> Physical Medicine And Rehabilitation<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1790071215<br>         <hr>         <b>Risk Score:</b> 3.85<br>         <b>Total Cost:</b> $223,192.33<br>         <b>Total Claims:</b> 213<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_e756a0dddd3436831c31ecf2752dad79.setContent(html_336b19e11469a4a8dec0a974c61f1306);
+            
+        
+
+        circle_marker_d48e56e8f794215591df21872a72bd69.bindPopup(popup_e756a0dddd3436831c31ecf2752dad79)
+        ;
+
+        
+    
+    
+            circle_marker_d48e56e8f794215591df21872a72bd69.bindTooltip(
+                `<div>
+                     Seidel | Risk: 3.85
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e4e12c3acac62997338fffba9ec1cf09 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.8331, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_9cd49600335373838b49ea123c28689b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0bdc57983d3c7dfbd03617b33d193fe1 = $(`<div id="html_0bdc57983d3c7dfbd03617b33d193fe1" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Kohlhaas, Julia         </h4>         <b>Specialty:</b> General Surgery<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1659639458<br>         <hr>         <b>Risk Score:</b> 3.67<br>         <b>Total Cost:</b> $23,949.91<br>         <b>Total Claims:</b> 13<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_9cd49600335373838b49ea123c28689b.setContent(html_0bdc57983d3c7dfbd03617b33d193fe1);
+            
+        
+
+        circle_marker_e4e12c3acac62997338fffba9ec1cf09.bindPopup(popup_9cd49600335373838b49ea123c28689b)
+        ;
+
+        
+    
+    
+            circle_marker_e4e12c3acac62997338fffba9ec1cf09.bindTooltip(
+                `<div>
+                     Kohlhaas | Risk: 3.67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_01a0b8edb32417771dadcbd102c757d4 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.8247, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_e152819d010a5e46884c61743411abd4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d59d93c6ceb0171e1b8595f07c6b79f3 = $(`<div id="html_d59d93c6ceb0171e1b8595f07c6b79f3" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Huynh-Lu, Julie         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1770992877<br>         <hr>         <b>Risk Score:</b> 3.65<br>         <b>Total Cost:</b> $4,036,318.46<br>         <b>Total Claims:</b> 405<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 4     </div>     </div>`)[0];
+                popup_e152819d010a5e46884c61743411abd4.setContent(html_d59d93c6ceb0171e1b8595f07c6b79f3);
+            
+        
+
+        circle_marker_01a0b8edb32417771dadcbd102c757d4.bindPopup(popup_e152819d010a5e46884c61743411abd4)
+        ;
+
+        
+    
+    
+            circle_marker_01a0b8edb32417771dadcbd102c757d4.bindTooltip(
+                `<div>
+                     Huynh-Lu | Risk: 3.65
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a7855cc33ac24d7161c24c5932996ea0 = L.circleMarker(
+                [32.7555, -97.3308],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.8041, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_11dd6e1bbe29d8f7bbcdbcb20e16c376 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c77efe6e7cd44414fb78e61a0c16448f = $(`<div id="html_c77efe6e7cd44414fb78e61a0c16448f" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Little, Marlee         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Fort Worth<br>         <b>NPI:</b> 1548974462<br>         <hr>         <b>Risk Score:</b> 3.61<br>         <b>Total Cost:</b> $279,511.18<br>         <b>Total Claims:</b> 70<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_11dd6e1bbe29d8f7bbcdbcb20e16c376.setContent(html_c77efe6e7cd44414fb78e61a0c16448f);
+            
+        
+
+        circle_marker_a7855cc33ac24d7161c24c5932996ea0.bindPopup(popup_11dd6e1bbe29d8f7bbcdbcb20e16c376)
+        ;
+
+        
+    
+    
+            circle_marker_a7855cc33ac24d7161c24c5932996ea0.bindTooltip(
+                `<div>
+                     Little | Risk: 3.61
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d67889bd605265cb2a6c1a14b672fbb8 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.774750000000001, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_0577d42e0ef22a9d7f45e19c9eda32e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6d4ff094ddb99aebf1b34863bd9adb72 = $(`<div id="html_6d4ff094ddb99aebf1b34863bd9adb72" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Gantz, Annette         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1245753730<br>         <hr>         <b>Risk Score:</b> 3.55<br>         <b>Total Cost:</b> $2,379,328.62<br>         <b>Total Claims:</b> 861<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 10     </div>     </div>`)[0];
+                popup_0577d42e0ef22a9d7f45e19c9eda32e9.setContent(html_6d4ff094ddb99aebf1b34863bd9adb72);
+            
+        
+
+        circle_marker_d67889bd605265cb2a6c1a14b672fbb8.bindPopup(popup_0577d42e0ef22a9d7f45e19c9eda32e9)
+        ;
+
+        
+    
+    
+            circle_marker_d67889bd605265cb2a6c1a14b672fbb8.bindTooltip(
+                `<div>
+                     Gantz | Risk: 3.55
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_82865c7afde96ae6fb01055bd6201d7f = L.circleMarker(
+                [27.5306, -99.4803],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.72335, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_a5233a74fa7c0c15928967462a7a1a5d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4a28634f95236348ab22d095165913da = $(`<div id="html_4a28634f95236348ab22d095165913da" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Bannon, Kathleen         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Laredo<br>         <b>NPI:</b> 1184632317<br>         <hr>         <b>Risk Score:</b> 3.45<br>         <b>Total Cost:</b> $378,955.65<br>         <b>Total Claims:</b> 220<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_a5233a74fa7c0c15928967462a7a1a5d.setContent(html_4a28634f95236348ab22d095165913da);
+            
+        
+
+        circle_marker_82865c7afde96ae6fb01055bd6201d7f.bindPopup(popup_a5233a74fa7c0c15928967462a7a1a5d)
+        ;
+
+        
+    
+    
+            circle_marker_82865c7afde96ae6fb01055bd6201d7f.bindTooltip(
+                `<div>
+                     Bannon | Risk: 3.45
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f336a92ba8e1602ade96735306cea991 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.7103, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_c2102aed2d6703b916a061185b644104 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_18622bc36ae6ce4e88cc3a60060b5ad1 = $(`<div id="html_18622bc36ae6ce4e88cc3a60060b5ad1" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Jain, Raksha         </h4>         <b>Specialty:</b> Pulmonary Disease<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1376761536<br>         <hr>         <b>Risk Score:</b> 3.42<br>         <b>Total Cost:</b> $2,681,173.67<br>         <b>Total Claims:</b> 144<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_c2102aed2d6703b916a061185b644104.setContent(html_18622bc36ae6ce4e88cc3a60060b5ad1);
+            
+        
+
+        circle_marker_f336a92ba8e1602ade96735306cea991.bindPopup(popup_c2102aed2d6703b916a061185b644104)
+        ;
+
+        
+    
+    
+            circle_marker_f336a92ba8e1602ade96735306cea991.bindTooltip(
+                `<div>
+                     Jain | Risk: 3.42
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f0dc6bbd301f7c06c17807c205d1dc93 = L.circleMarker(
+                [26.2034, -98.23],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.7068, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_992a453b2f317b610f67fade6178da65 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1156c6122c2c4b9da1d468fb2bd3fbe1 = $(`<div id="html_1156c6122c2c4b9da1d468fb2bd3fbe1" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Moreno, Katia         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Mcallen<br>         <b>NPI:</b> 1538621693<br>         <hr>         <b>Risk Score:</b> 3.41<br>         <b>Total Cost:</b> $366,672.45<br>         <b>Total Claims:</b> 106<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_992a453b2f317b610f67fade6178da65.setContent(html_1156c6122c2c4b9da1d468fb2bd3fbe1);
+            
+        
+
+        circle_marker_f0dc6bbd301f7c06c17807c205d1dc93.bindPopup(popup_992a453b2f317b610f67fade6178da65)
+        ;
+
+        
+    
+    
+            circle_marker_f0dc6bbd301f7c06c17807c205d1dc93.bindTooltip(
+                `<div>
+                     Moreno | Risk: 3.41
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eb8f8f1861d2d66238ae0d89a9258e44 = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.68395, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_1c70a8b57c22812bd4f777ad2a7b5334 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_66e84a275e2e020a58b7e4a3f993c9d1 = $(`<div id="html_66e84a275e2e020a58b7e4a3f993c9d1" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Patel, Paras         </h4>         <b>Specialty:</b> Dentist<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1083988729<br>         <hr>         <b>Risk Score:</b> 3.37<br>         <b>Total Cost:</b> $6,034.89<br>         <b>Total Claims:</b> 206<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_1c70a8b57c22812bd4f777ad2a7b5334.setContent(html_66e84a275e2e020a58b7e4a3f993c9d1);
+            
+        
+
+        circle_marker_eb8f8f1861d2d66238ae0d89a9258e44.bindPopup(popup_1c70a8b57c22812bd4f777ad2a7b5334)
+        ;
+
+        
+    
+    
+            circle_marker_eb8f8f1861d2d66238ae0d89a9258e44.bindTooltip(
+                `<div>
+                     Patel | Risk: 3.37
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1d1b989408db336d763b771e7d50b38f = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.67225, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_a22ed1fbaf68355e9af290ca44afd4c0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fe4cd0bbe83596675fb01786c1172676 = $(`<div id="html_fe4cd0bbe83596675fb01786c1172676" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Zeh, Herbert         </h4>         <b>Specialty:</b> Surgical Oncology<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1306812573<br>         <hr>         <b>Risk Score:</b> 3.34<br>         <b>Total Cost:</b> $175,431.40<br>         <b>Total Claims:</b> 92<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_a22ed1fbaf68355e9af290ca44afd4c0.setContent(html_fe4cd0bbe83596675fb01786c1172676);
+            
+        
+
+        circle_marker_1d1b989408db336d763b771e7d50b38f.bindPopup(popup_a22ed1fbaf68355e9af290ca44afd4c0)
+        ;
+
+        
+    
+    
+            circle_marker_1d1b989408db336d763b771e7d50b38f.bindTooltip(
+                `<div>
+                     Zeh | Risk: 3.34
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8a970aa40ad71912118c9cb3843ffe34 = L.circleMarker(
+                [32.3513, -95.3011],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.65915, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_dcf3f46ebd1417cbb3ebafec4dc12f82 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_24725da1d3b9a3d67600d090695be624 = $(`<div id="html_24725da1d3b9a3d67600d090695be624" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Keeling, Lee Ann         </h4>         <b>Specialty:</b> Emergency Medicine<br>         <b>City:</b> Tyler<br>         <b>NPI:</b> 1962458224<br>         <hr>         <b>Risk Score:</b> 3.32<br>         <b>Total Cost:</b> $134,519.82<br>         <b>Total Claims:</b> 175<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_dcf3f46ebd1417cbb3ebafec4dc12f82.setContent(html_24725da1d3b9a3d67600d090695be624);
+            
+        
+
+        circle_marker_8a970aa40ad71912118c9cb3843ffe34.bindPopup(popup_dcf3f46ebd1417cbb3ebafec4dc12f82)
+        ;
+
+        
+    
+    
+            circle_marker_8a970aa40ad71912118c9cb3843ffe34.bindTooltip(
+                `<div>
+                     Keeling | Risk: 3.32
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_dc75897d7089cc335cc546599b6bbe78 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.639, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_d5a2e3765a33673b9c052162b2176e4c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e18f2eaf0af4bdaedb350e2c935ae115 = $(`<div id="html_e18f2eaf0af4bdaedb350e2c935ae115" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Cline, Mary         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1720168396<br>         <hr>         <b>Risk Score:</b> 3.28<br>         <b>Total Cost:</b> $1,767,044.37<br>         <b>Total Claims:</b> 668<br>         <b>Unique Drugs:</b> 6<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_d5a2e3765a33673b9c052162b2176e4c.setContent(html_e18f2eaf0af4bdaedb350e2c935ae115);
+            
+        
+
+        circle_marker_dc75897d7089cc335cc546599b6bbe78.bindPopup(popup_d5a2e3765a33673b9c052162b2176e4c)
+        ;
+
+        
+    
+    
+            circle_marker_dc75897d7089cc335cc546599b6bbe78.bindTooltip(
+                `<div>
+                     Cline | Risk: 3.28
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bacbc33c223d9afc47ea5131f6ef6522 = L.circleMarker(
+                [30.2672, -97.7431],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6265, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_9f3f90c69ff1636ce2029477d2f0bb13 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_76bb3b0fee803a5982441e7061fd0600 = $(`<div id="html_76bb3b0fee803a5982441e7061fd0600" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Cherian, Justin         </h4>         <b>Specialty:</b> Emergency Medicine<br>         <b>City:</b> Austin<br>         <b>NPI:</b> 1356789168<br>         <hr>         <b>Risk Score:</b> 3.25<br>         <b>Total Cost:</b> $29,715.50<br>         <b>Total Claims:</b> 40<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_9f3f90c69ff1636ce2029477d2f0bb13.setContent(html_76bb3b0fee803a5982441e7061fd0600);
+            
+        
+
+        circle_marker_bacbc33c223d9afc47ea5131f6ef6522.bindPopup(popup_9f3f90c69ff1636ce2029477d2f0bb13)
+        ;
+
+        
+    
+    
+            circle_marker_bacbc33c223d9afc47ea5131f6ef6522.bindTooltip(
+                `<div>
+                     Cherian | Risk: 3.25
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b156222207f7433ddb371f45078bad5 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6127, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_6262d7dbdb85f013f903695cde16920b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_985788c5b91465a878d18657c37697ad = $(`<div id="html_985788c5b91465a878d18657c37697ad" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Del Rosario, Janet         </h4>         <b>Specialty:</b> Physical Medicine And Rehabilitation<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1629457791<br>         <hr>         <b>Risk Score:</b> 3.23<br>         <b>Total Cost:</b> $89,510.76<br>         <b>Total Claims:</b> 113<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 3     </div>     </div>`)[0];
+                popup_6262d7dbdb85f013f903695cde16920b.setContent(html_985788c5b91465a878d18657c37697ad);
+            
+        
+
+        circle_marker_2b156222207f7433ddb371f45078bad5.bindPopup(popup_6262d7dbdb85f013f903695cde16920b)
+        ;
+
+        
+    
+    
+            circle_marker_2b156222207f7433ddb371f45078bad5.bindTooltip(
+                `<div>
+                     Del Rosario | Risk: 3.23
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_91366bdc02597ad38772dc2c13cd5178 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5764, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_883c4e48fab0b75b3e5e21fcf2be5a1f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7279c08df91686445d8f9d06ae2afe02 = $(`<div id="html_7279c08df91686445d8f9d06ae2afe02" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Shaheen, Montaser         </h4>         <b>Specialty:</b> Hematology<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1801860168<br>         <hr>         <b>Risk Score:</b> 3.15<br>         <b>Total Cost:</b> $1,167,573.35<br>         <b>Total Claims:</b> 49<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_883c4e48fab0b75b3e5e21fcf2be5a1f.setContent(html_7279c08df91686445d8f9d06ae2afe02);
+            
+        
+
+        circle_marker_91366bdc02597ad38772dc2c13cd5178.bindPopup(popup_883c4e48fab0b75b3e5e21fcf2be5a1f)
+        ;
+
+        
+    
+    
+            circle_marker_91366bdc02597ad38772dc2c13cd5178.bindTooltip(
+                `<div>
+                     Shaheen | Risk: 3.15
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_912b2d8d35db3062d8e45cffc235cc91 = L.circleMarker(
+                [33.1032, -96.6706],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.57045, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_e9bb050a3df0fde0559c25093531c88c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c72a35d5a7b2914d409ea450b9a3b970 = $(`<div id="html_c72a35d5a7b2914d409ea450b9a3b970" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Marlett, Lynn         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Allen<br>         <b>NPI:</b> 1225000250<br>         <hr>         <b>Risk Score:</b> 3.14<br>         <b>Total Cost:</b> $1,163,648.97<br>         <b>Total Claims:</b> 540<br>         <b>Unique Drugs:</b> 11<br>         <b>Total Flags:</b> 8     </div>     </div>`)[0];
+                popup_e9bb050a3df0fde0559c25093531c88c.setContent(html_c72a35d5a7b2914d409ea450b9a3b970);
+            
+        
+
+        circle_marker_912b2d8d35db3062d8e45cffc235cc91.bindPopup(popup_e9bb050a3df0fde0559c25093531c88c)
+        ;
+
+        
+    
+    
+            circle_marker_912b2d8d35db3062d8e45cffc235cc91.bindTooltip(
+                `<div>
+                     Marlett | Risk: 3.14
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d990ced89aff82363004c6eae792704d = L.circleMarker(
+                [32.7357, -97.1081],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.553, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_6963e3e0526bd5097ad35db394d813aa = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6e1bed38a50317ce85392222224479f0 = $(`<div id="html_6e1bed38a50317ce85392222224479f0" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Chu, Jessica         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Arlington<br>         <b>NPI:</b> 1407404312<br>         <hr>         <b>Risk Score:</b> 3.11<br>         <b>Total Cost:</b> $113,730.04<br>         <b>Total Claims:</b> 25<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_6963e3e0526bd5097ad35db394d813aa.setContent(html_6e1bed38a50317ce85392222224479f0);
+            
+        
+
+        circle_marker_d990ced89aff82363004c6eae792704d.bindPopup(popup_6963e3e0526bd5097ad35db394d813aa)
+        ;
+
+        
+    
+    
+            circle_marker_d990ced89aff82363004c6eae792704d.bindTooltip(
+                `<div>
+                     Chu | Risk: 3.11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_35a5efcb04b5b9b633fdad2c70c6f4e3 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5473, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_f830813e4b0710ce9106569ad9424d13 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a6d8e06f7ff0c572a2773dd306d4918d = $(`<div id="html_a6d8e06f7ff0c572a2773dd306d4918d" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Horvath, Elizabeth         </h4>         <b>Specialty:</b> Physician Assistant<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1952870537<br>         <hr>         <b>Risk Score:</b> 3.09<br>         <b>Total Cost:</b> $430,652.56<br>         <b>Total Claims:</b> 105<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_f830813e4b0710ce9106569ad9424d13.setContent(html_a6d8e06f7ff0c572a2773dd306d4918d);
+            
+        
+
+        circle_marker_35a5efcb04b5b9b633fdad2c70c6f4e3.bindPopup(popup_f830813e4b0710ce9106569ad9424d13)
+        ;
+
+        
+    
+    
+            circle_marker_35a5efcb04b5b9b633fdad2c70c6f4e3.bindTooltip(
+                `<div>
+                     Horvath | Risk: 3.09
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0260ac1f3c36e86ba51fc1a8432f57ac = L.circleMarker(
+                [31.7619, -106.485],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5302, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_8165a05a6637df83fee53b1f7d62efb0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_286703f43251a22e9bbfefd8bc5e5d94 = $(`<div id="html_286703f43251a22e9bbfefd8bc5e5d94" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Voglewede, Daniel         </h4>         <b>Specialty:</b> Urology<br>         <b>City:</b> El Paso<br>         <b>NPI:</b> 1588636633<br>         <hr>         <b>Risk Score:</b> 3.06<br>         <b>Total Cost:</b> $14,159,776.54<br>         <b>Total Claims:</b> 1,300<br>         <b>Unique Drugs:</b> 8<br>         <b>Total Flags:</b> 11     </div>     </div>`)[0];
+                popup_8165a05a6637df83fee53b1f7d62efb0.setContent(html_286703f43251a22e9bbfefd8bc5e5d94);
+            
+        
+
+        circle_marker_0260ac1f3c36e86ba51fc1a8432f57ac.bindPopup(popup_8165a05a6637df83fee53b1f7d62efb0)
+        ;
+
+        
+    
+    
+            circle_marker_0260ac1f3c36e86ba51fc1a8432f57ac.bindTooltip(
+                `<div>
+                     Voglewede | Risk: 3.06
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_65ed4c5c4d976b3ad05e37bdbfcfbb78 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.52015, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_b97fd4bc8c11ee10261923e982f12e46 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6e780fa9f3099954c8e8fb6a7500cf38 = $(`<div id="html_6e780fa9f3099954c8e8fb6a7500cf38" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Ramos, Jamiel         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1497183529<br>         <hr>         <b>Risk Score:</b> 3.04<br>         <b>Total Cost:</b> $67,233.39<br>         <b>Total Claims:</b> 18<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_b97fd4bc8c11ee10261923e982f12e46.setContent(html_6e780fa9f3099954c8e8fb6a7500cf38);
+            
+        
+
+        circle_marker_65ed4c5c4d976b3ad05e37bdbfcfbb78.bindPopup(popup_b97fd4bc8c11ee10261923e982f12e46)
+        ;
+
+        
+    
+    
+            circle_marker_65ed4c5c4d976b3ad05e37bdbfcfbb78.bindTooltip(
+                `<div>
+                     Ramos | Risk: 3.04
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c335fe0e3159716acf6da407dc29d445 = L.circleMarker(
+                [27.5306, -99.4803],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.515, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_be9fe579ad805f50230a73c397d36b09 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2e7ddf754d1ae7865a6aac98a47ec63e = $(`<div id="html_2e7ddf754d1ae7865a6aac98a47ec63e" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Unzeitig, Gary         </h4>         <b>Specialty:</b> General Surgery<br>         <b>City:</b> Laredo<br>         <b>NPI:</b> 1528129921<br>         <hr>         <b>Risk Score:</b> 3.03<br>         <b>Total Cost:</b> $14,817.86<br>         <b>Total Claims:</b> 438<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_be9fe579ad805f50230a73c397d36b09.setContent(html_2e7ddf754d1ae7865a6aac98a47ec63e);
+            
+        
+
+        circle_marker_c335fe0e3159716acf6da407dc29d445.bindPopup(popup_be9fe579ad805f50230a73c397d36b09)
+        ;
+
+        
+    
+    
+            circle_marker_c335fe0e3159716acf6da407dc29d445.bindTooltip(
+                `<div>
+                     Unzeitig | Risk: 3.03
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_50c6f59ce396b34711693781a47d4c6d = L.circleMarker(
+                [32.7767, -96.797],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.49295, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_91ae5e12a836e578f9d1db60e2a6dc01 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8f6a2af47486e477d0f89cb5c27150fe = $(`<div id="html_8f6a2af47486e477d0f89cb5c27150fe" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Atwood, Michelle         </h4>         <b>Specialty:</b> Emergency Medicine<br>         <b>City:</b> Dallas<br>         <b>NPI:</b> 1396768198<br>         <hr>         <b>Risk Score:</b> 2.99<br>         <b>Total Cost:</b> $98,213.15<br>         <b>Total Claims:</b> 109<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_91ae5e12a836e578f9d1db60e2a6dc01.setContent(html_8f6a2af47486e477d0f89cb5c27150fe);
+            
+        
+
+        circle_marker_50c6f59ce396b34711693781a47d4c6d.bindPopup(popup_91ae5e12a836e578f9d1db60e2a6dc01)
+        ;
+
+        
+    
+    
+            circle_marker_50c6f59ce396b34711693781a47d4c6d.bindTooltip(
+                `<div>
+                     Atwood | Risk: 2.99
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3241e7bf3b421fdbfd44def12294043b = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.48455, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_12b212fce26c1639297233603151f733 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b32c47c5704af1f8d87fe993d72c5bec = $(`<div id="html_b32c47c5704af1f8d87fe993d72c5bec" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Espanola, Jordanna         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1033645379<br>         <hr>         <b>Risk Score:</b> 2.97<br>         <b>Total Cost:</b> $232,516.03<br>         <b>Total Claims:</b> 70<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_12b212fce26c1639297233603151f733.setContent(html_b32c47c5704af1f8d87fe993d72c5bec);
+            
+        
+
+        circle_marker_3241e7bf3b421fdbfd44def12294043b.bindPopup(popup_12b212fce26c1639297233603151f733)
+        ;
+
+        
+    
+    
+            circle_marker_3241e7bf3b421fdbfd44def12294043b.bindTooltip(
+                `<div>
+                     Espanola | Risk: 2.97
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_15a4c76adacee9cfeb22ce7dbe7e2eaf = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.4743, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_814fafa12057b7d680a8cb8043566b1d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f4f7c2e3d1be8c2d8ebf14e1b66b31cb = $(`<div id="html_f4f7c2e3d1be8c2d8ebf14e1b66b31cb" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Kaspar, Thomas         </h4>         <b>Specialty:</b> Internal Medicine<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1205810629<br>         <hr>         <b>Risk Score:</b> 2.95<br>         <b>Total Cost:</b> $479,885.54<br>         <b>Total Claims:</b> 160<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_814fafa12057b7d680a8cb8043566b1d.setContent(html_f4f7c2e3d1be8c2d8ebf14e1b66b31cb);
+            
+        
+
+        circle_marker_15a4c76adacee9cfeb22ce7dbe7e2eaf.bindPopup(popup_814fafa12057b7d680a8cb8043566b1d)
+        ;
+
+        
+    
+    
+            circle_marker_15a4c76adacee9cfeb22ce7dbe7e2eaf.bindTooltip(
+                `<div>
+                     Kaspar | Risk: 2.95
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7ec57e1fa25b47e1dfd09c5952c7afa8 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.47235, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_eef43d45ff1f042bcfaa63f385632ebd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_818b6200b596c10f205515292459c1bc = $(`<div id="html_818b6200b596c10f205515292459c1bc" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Appel, Stanley         </h4>         <b>Specialty:</b> Neurology<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1124009113<br>         <hr>         <b>Risk Score:</b> 2.94<br>         <b>Total Cost:</b> $2,239,785.30<br>         <b>Total Claims:</b> 319<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 4     </div>     </div>`)[0];
+                popup_eef43d45ff1f042bcfaa63f385632ebd.setContent(html_818b6200b596c10f205515292459c1bc);
+            
+        
+
+        circle_marker_7ec57e1fa25b47e1dfd09c5952c7afa8.bindPopup(popup_eef43d45ff1f042bcfaa63f385632ebd)
+        ;
+
+        
+    
+    
+            circle_marker_7ec57e1fa25b47e1dfd09c5952c7afa8.bindTooltip(
+                `<div>
+                     Appel | Risk: 2.94
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2abe22c7e1b8d8ec0d4eb1914f91f4c7 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.45255, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_460c39f9df3396aea90eab72d6b259e2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7b34769733fc5a6f50ab8d93daa37fd7 = $(`<div id="html_7b34769733fc5a6f50ab8d93daa37fd7" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Williams, Stephanie         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1043997547<br>         <hr>         <b>Risk Score:</b> 2.91<br>         <b>Total Cost:</b> $224,916.28<br>         <b>Total Claims:</b> 69<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_460c39f9df3396aea90eab72d6b259e2.setContent(html_7b34769733fc5a6f50ab8d93daa37fd7);
+            
+        
+
+        circle_marker_2abe22c7e1b8d8ec0d4eb1914f91f4c7.bindPopup(popup_460c39f9df3396aea90eab72d6b259e2)
+        ;
+
+        
+    
+    
+            circle_marker_2abe22c7e1b8d8ec0d4eb1914f91f4c7.bindTooltip(
+                `<div>
+                     Williams | Risk: 2.91
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6a7e7e7ab936ecc92f7fd93bdff0ef81 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.44365, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_690198df9626c1f9001770aa9d1f51da = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d7edd727bcbbd96578b11e03237af096 = $(`<div id="html_d7edd727bcbbd96578b11e03237af096" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Krucke, Gus         </h4>         <b>Specialty:</b> Hospitalist<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1992738967<br>         <hr>         <b>Risk Score:</b> 2.89<br>         <b>Total Cost:</b> $422,087.44<br>         <b>Total Claims:</b> 195<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 4     </div>     </div>`)[0];
+                popup_690198df9626c1f9001770aa9d1f51da.setContent(html_d7edd727bcbbd96578b11e03237af096);
+            
+        
+
+        circle_marker_6a7e7e7ab936ecc92f7fd93bdff0ef81.bindPopup(popup_690198df9626c1f9001770aa9d1f51da)
+        ;
+
+        
+    
+    
+            circle_marker_6a7e7e7ab936ecc92f7fd93bdff0ef81.bindTooltip(
+                `<div>
+                     Krucke | Risk: 2.89
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_69dbccb6493a26558d274eeda63b3309 = L.circleMarker(
+                [32.3513, -95.3011],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.4429, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_cf2ccb4450aef6effb434c33b3218d7f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0bd92ed17db4d28e0482a0fdfe764220 = $(`<div id="html_0bd92ed17db4d28e0482a0fdfe764220" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Davis, Jennifer         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Tyler<br>         <b>NPI:</b> 1861074775<br>         <hr>         <b>Risk Score:</b> 2.89<br>         <b>Total Cost:</b> $800,191.87<br>         <b>Total Claims:</b> 782<br>         <b>Unique Drugs:</b> 7<br>         <b>Total Flags:</b> 7     </div>     </div>`)[0];
+                popup_cf2ccb4450aef6effb434c33b3218d7f.setContent(html_0bd92ed17db4d28e0482a0fdfe764220);
+            
+        
+
+        circle_marker_69dbccb6493a26558d274eeda63b3309.bindPopup(popup_cf2ccb4450aef6effb434c33b3218d7f)
+        ;
+
+        
+    
+    
+            circle_marker_69dbccb6493a26558d274eeda63b3309.bindTooltip(
+                `<div>
+                     Davis | Risk: 2.89
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f94f30f44d1cfd26b5ed3dbc5400b2a8 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.39625, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_86d92011bd7cad673c716151670b0209 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_65ec9cfcd1166d397450fd466b6670d0 = $(`<div id="html_65ec9cfcd1166d397450fd466b6670d0" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Cavanaugh, Mary         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1285985341<br>         <hr>         <b>Risk Score:</b> 2.79<br>         <b>Total Cost:</b> $1,422,433.62<br>         <b>Total Claims:</b> 704<br>         <b>Unique Drugs:</b> 6<br>         <b>Total Flags:</b> 6     </div>     </div>`)[0];
+                popup_86d92011bd7cad673c716151670b0209.setContent(html_65ec9cfcd1166d397450fd466b6670d0);
+            
+        
+
+        circle_marker_f94f30f44d1cfd26b5ed3dbc5400b2a8.bindPopup(popup_86d92011bd7cad673c716151670b0209)
+        ;
+
+        
+    
+    
+            circle_marker_f94f30f44d1cfd26b5ed3dbc5400b2a8.bindTooltip(
+                `<div>
+                     Cavanaugh | Risk: 2.79
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_853c392077fddd1f3b295afb68be186c = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.3925, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_ec0c6eb039546b40fe7d816599782ead = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a7a0350460ce51e22e403c9b0591d118 = $(`<div id="html_a7a0350460ce51e22e403c9b0591d118" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Stamper, James         </h4>         <b>Specialty:</b> Dentist<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1922153493<br>         <hr>         <b>Risk Score:</b> 2.79<br>         <b>Total Cost:</b> $1,403.64<br>         <b>Total Claims:</b> 99<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_ec0c6eb039546b40fe7d816599782ead.setContent(html_a7a0350460ce51e22e403c9b0591d118);
+            
+        
+
+        circle_marker_853c392077fddd1f3b295afb68be186c.bindPopup(popup_ec0c6eb039546b40fe7d816599782ead)
+        ;
+
+        
+    
+    
+            circle_marker_853c392077fddd1f3b295afb68be186c.bindTooltip(
+                `<div>
+                     Stamper | Risk: 2.79
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d39a520677b7fa448ab579712c379d5d = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.37245, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_9e09edeb569764cae80316f2b5a6c60d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f2656f1f2fc546a7cfec242e3903b746 = $(`<div id="html_f2656f1f2fc546a7cfec242e3903b746" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Kamas, Carmen         </h4>         <b>Specialty:</b> Dentist<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1396723847<br>         <hr>         <b>Risk Score:</b> 2.74<br>         <b>Total Cost:</b> $2,559.74<br>         <b>Total Claims:</b> 113<br>         <b>Unique Drugs:</b> 3<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_9e09edeb569764cae80316f2b5a6c60d.setContent(html_f2656f1f2fc546a7cfec242e3903b746);
+            
+        
+
+        circle_marker_d39a520677b7fa448ab579712c379d5d.bindPopup(popup_9e09edeb569764cae80316f2b5a6c60d)
+        ;
+
+        
+    
+    
+            circle_marker_d39a520677b7fa448ab579712c379d5d.bindTooltip(
+                `<div>
+                     Kamas | Risk: 2.74
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_46d503c67763ee383f89b8ad3268a420 = L.circleMarker(
+                [30.2672, -97.7431],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.33625, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_b3464be9c0a05ee1a3a23cf5ba98d3ce = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3581bffc600f8d120d5c69c8b0fa94f0 = $(`<div id="html_3581bffc600f8d120d5c69c8b0fa94f0" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Hersh, Ben         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Austin<br>         <b>NPI:</b> 1346636065<br>         <hr>         <b>Risk Score:</b> 2.67<br>         <b>Total Cost:</b> $309,014.10<br>         <b>Total Claims:</b> 105<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_b3464be9c0a05ee1a3a23cf5ba98d3ce.setContent(html_3581bffc600f8d120d5c69c8b0fa94f0);
+            
+        
+
+        circle_marker_46d503c67763ee383f89b8ad3268a420.bindPopup(popup_b3464be9c0a05ee1a3a23cf5ba98d3ce)
+        ;
+
+        
+    
+    
+            circle_marker_46d503c67763ee383f89b8ad3268a420.bindTooltip(
+                `<div>
+                     Hersh | Risk: 2.67
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4e7e360699af3b6ddcc7fe86da5fa887 = L.circleMarker(
+                [29.4241, -98.4936],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.3298, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_7f815fff7029fb523abed188267acef1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_278f6fb07f5ed49c8d96cc9fe961341a = $(`<div id="html_278f6fb07f5ed49c8d96cc9fe961341a" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Vargas, Janean         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> San Antonio<br>         <b>NPI:</b> 1922618388<br>         <hr>         <b>Risk Score:</b> 2.66<br>         <b>Total Cost:</b> $887,350.71<br>         <b>Total Claims:</b> 522<br>         <b>Unique Drugs:</b> 4<br>         <b>Total Flags:</b> 9     </div>     </div>`)[0];
+                popup_7f815fff7029fb523abed188267acef1.setContent(html_278f6fb07f5ed49c8d96cc9fe961341a);
+            
+        
+
+        circle_marker_4e7e360699af3b6ddcc7fe86da5fa887.bindPopup(popup_7f815fff7029fb523abed188267acef1)
+        ;
+
+        
+    
+    
+            circle_marker_4e7e360699af3b6ddcc7fe86da5fa887.bindTooltip(
+                `<div>
+                     Vargas | Risk: 2.66
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_71a84b2348a76321caaec81509c3313d = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.32745, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_117a6fd33b558a5af71ebc4a670dc7c4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f5014f1dbea6572b5a7c6d1acc0886d9 = $(`<div id="html_f5014f1dbea6572b5a7c6d1acc0886d9" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Reynolds, Rae Zyn         </h4>         <b>Specialty:</b> Nurse Practitioner<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1184714305<br>         <hr>         <b>Risk Score:</b> 2.65<br>         <b>Total Cost:</b> $148,385.50<br>         <b>Total Claims:</b> 48<br>         <b>Unique Drugs:</b> 1<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_117a6fd33b558a5af71ebc4a670dc7c4.setContent(html_f5014f1dbea6572b5a7c6d1acc0886d9);
+            
+        
+
+        circle_marker_71a84b2348a76321caaec81509c3313d.bindPopup(popup_117a6fd33b558a5af71ebc4a670dc7c4)
+        ;
+
+        
+    
+    
+            circle_marker_71a84b2348a76321caaec81509c3313d.bindTooltip(
+                `<div>
+                     Reynolds | Risk: 2.65
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_82822aa6645c36a3f58c7dd883a5d0a8 = L.circleMarker(
+                [29.7604, -95.3698],
+                {"bubblingMouseEvents": true, "color": "#fbc02d", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fbc02d", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.32745, "stroke": true, "weight": 3}
+            ).addTo(marker_cluster_c119d2936ebb894d71aac32fda09b660);
+        
+    
+        var popup_63a69f0c6dcf350a44fd253e981eb1fe = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0526ffe7e494750ff0b00dfa5253794 = $(`<div id="html_a0526ffe7e494750ff0b00dfa5253794" style="width: 100.0%; height: 100.0%;">     <div style='font-family: Arial; width: 220px;'>         <h4 style='color: #fbc02d; margin-bottom: 5px;'>             ⚠️ Dang, Bich         </h4>         <b>Specialty:</b> Family Practice<br>         <b>City:</b> Houston<br>         <b>NPI:</b> 1215181235<br>         <hr>         <b>Risk Score:</b> 2.65<br>         <b>Total Cost:</b> $281,245.21<br>         <b>Total Claims:</b> 110<br>         <b>Unique Drugs:</b> 2<br>         <b>Total Flags:</b> 2     </div>     </div>`)[0];
+                popup_63a69f0c6dcf350a44fd253e981eb1fe.setContent(html_a0526ffe7e494750ff0b00dfa5253794);
+            
+        
+
+        circle_marker_82822aa6645c36a3f58c7dd883a5d0a8.bindPopup(popup_63a69f0c6dcf350a44fd253e981eb1fe)
+        ;
+
+        
+    
+    
+            circle_marker_82822aa6645c36a3f58c7dd883a5d0a8.bindTooltip(
+                `<div>
+                     Dang | Risk: 2.65
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            marker_cluster_c119d2936ebb894d71aac32fda09b660.addTo(map_1e034f19c7cfe67b78e10bf726fb90d3);
+        
+</script>
+</html>
